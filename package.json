@@ -15,7 +15,7 @@
     "ejs": "^1.0.0",
     "express": "5.0.0-alpha.2",
     "express-session": "^1.7.6",
-    "mongoose": "^4.0.0",
+    "mongoose": "^5.7.5",
     "nodemon": "^2.0.6",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",

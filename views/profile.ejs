@@ -1,7 +1,7 @@
 <% include _header %>
 
 <% if ((currentUser) && (currentUser.id === user.id)) { %>
-  <a href="/chat" class="pull-right"> Join the Professional Business Chat Room?</a>
+  <a href="/chat/<%= currentUser.name() %>"  class="pull-right"> Join the Professional Business Chat Room?</a>
 <% } %>
 
 <h1><%= user.name() %></h1>

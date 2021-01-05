@@ -9,7 +9,10 @@ var session = require("express-session");
 var setUpPassport = require("./config/settinguppassport");
 var Chat = require("./models/chats");
 var routes = require("./routes/routes");
+let cors = require('cors');
 var app = express();
+
+app.use(cors());
 // defining the error handler middleware
 function errorHandler(err, req, res, next){
 	if(err){
@@ -26,7 +29,7 @@ mongoose.connect("mongodb://localhost:27017/chitchat");
 // as settinguppassport is exported as function, we call it as a SINGLE function that does setting up Password stuff.
 setUpPassport();
 
-app.set("port", process.env.PORT || 3000);
+app.set("port", process.env.PORT || 4000);
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");

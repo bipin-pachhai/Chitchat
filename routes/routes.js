@@ -11,18 +11,21 @@ router.use((req, res, next) =>{
 	next();
 });
 
-router.get('/', (req, res, next)=>{
-	User.find().sort({ createdAt: "descending"}).exec((err, users)=>
-	{
-		if(err){return next(err);}
-		res.render('index', {users: users});
-	});
 
-});
-// for the signup page display
-router.get('/signup', (req, res)=>{
-   res.render('signup');
-});
+ router.get('/', (req, res, next)=>{
+ 	User.find().sort({ createdAt: "descending"}).exec((err, users)=>
+ 	{
+ 		if(err){return next(err);}
+ 		res.render('index', {users: users});
+ 	});
+
+ });
+
+ //for the signup page display
+ router.get('/signup', (req, res)=>{
+    res.render('signup');
+ });
+
 // for actual signup.. Here we authenticate the user with Local strategy
 router.post('/signup',( req, res, next)=>{
 	 var username = req.body.username;
@@ -72,6 +75,7 @@ router.get('/users/:username', (req , res, next) =>{
     });
 //when landed to the edit link
 // const {ensureAuthenticated} = require('../config/auth');
+
 router.get('/chat/:username', require('../config/auth').ensureAuthenticated, (req, res)=>{
 
 	/* Chat.find({}).then(chat => {

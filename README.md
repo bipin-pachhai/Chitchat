@@ -7,7 +7,7 @@
 ### Hightlights
 1. Login/SignUp and authentication using passportJS local strategy.
 
-2. Store users, sessions and past room chats on local database "mongodb://localhost:27017/chitchat".
+2. Store users, sessions and past room chats on  MongoDB database.
 
 3. Realtime chat room using SOCKET.IO where authenticated users can chat with each other in real time. Also, loading of past chats as saved on database.
 
@@ -15,8 +15,11 @@
 
 ### Installation
 1. Clone this repository and run npm install
-2. Then run npm start
-3. visit localhost:4000 on website and explore
+2. Then run 'npm run dev' 
+3. visit localhost:4000 on website and explore.appeared
+
+### Docker Guideline
+    If you have docker installed in your computer, you can also run this app in docker containers. You just need to run 'docker-compose up --build' in your terminal.
 
 ### Note:
-You should have mongoDB and nodeJS installed and started for this application to work correctly.
+You should have mongoDB, nodeJS and Docker(optional) installed and started for this application to work correctly.

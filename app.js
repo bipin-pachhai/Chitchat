@@ -24,12 +24,24 @@ function errorHandler(err, req, res, next){
 //to store session on local mongoDB database
 const MongoStore = require('connect-mongo')(session);
 
-mongoose.connect("mongodb://localhost:27017/chitchat");
+//mongodb container is called mymongo in docker-compose.yml file so it's my mongo instead of localhost
+mongoose.connect("mongodb://mymongo:27017/chitchat", {
+  useNewUrlParser: true,
+  useCreateIndex: true,
+  useUnifiedTopology: true
+
+})
+.then(()=>{
+  console.log("DB connected successfully!!");
+})
+.catch(()=>{
+  console.log("DB Connection Unsuccessful!!");
+});
 
 // as settinguppassport is exported as function, we call it as a SINGLE function that does setting up Password stuff.
 setUpPassport();
 
-app.set("port", process.env.PORT || 4000);
+app.set("port", process.env.PORT || 4000 );
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -45,7 +57,7 @@ app.use(session({
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({
-  	url: 'mongodb://localhost:27017/chitchat',
+  	url: 'mongodb://mymongo:27017/chitchat',
   	collection: 'sessions',
   	cookie:{},
 
@@ -66,7 +78,7 @@ io.on("connection", socket =>{
   socket.on('chat message', (data) => {
   //console.log('message: ' + data.message);
    // Storing the chats in mongoDB database
-  mongoose.createConnection('mongodb://localhost:27017/chitchat', function(err, db) {
+  mongoose.createConnection('mongodb://mymongo:27017/chitchat', function(err, db) {
     if (err) {
         console.log('Could not save the chats', err);
     } else {

@@ -16,10 +16,9 @@
 ### Installation
 1. Clone this repository and run npm install
 2. Then run 'npm run dev' 
-3. visit localhost:4000 on website and explore.appeared
-
+3. visit localhost:4000 on website and explore.
 ### Docker Guideline
- If you have docker installed in your computer, you can also run this app in docker containers. You just need to run 'docker-compose up --build' in your terminal.
+ If you have docker installed in your computer, you can also run this app in docker containers. You just need to run 'docker-compose up --build' in your terminal. Visit localhost:4000 on website and explore.
 
 ### Note:
 You should have mongoDB, nodeJS and Docker(optional) installed and started for this application to work correctly.

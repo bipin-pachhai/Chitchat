@@ -19,7 +19,7 @@
 3. visit localhost:4000 on website and explore.appeared
 
 ### Docker Guideline
-    If you have docker installed in your computer, you can also run this app in docker containers. You just need to run 'docker-compose up --build' in your terminal.
+ If you have docker installed in your computer, you can also run this app in docker containers. You just need to run 'docker-compose up --build' in your terminal.
 
 ### Note:
 You should have mongoDB, nodeJS and Docker(optional) installed and started for this application to work correctly.

@@ -1,3 +1,4 @@
+require("dotenv").config();
 var bodyParser = require("body-parser");
 var cookieParser = require("cookie-parser");
 var express = require("express");
@@ -24,23 +25,24 @@ function errorHandler(err, req, res, next){
 const MongoStore = require('connect-mongo')(session);
 
 //mongodb container is called mymongo in docker-compose.yml file so it's my mongo instead of localhost
-mongoose.connect("mongodb://mymongo:27017/chitchat", {
+mongoose.connect(process.env.DATABASE, {
   useNewUrlParser: true,
-  useCreateIndex: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useFindAndModify: false,
+  useCreateIndex: true
 
 })
 .then(()=>{
   console.log("DB connected successfully!!");
 })
-.catch(()=>{
-  console.log("DB Connection Unsuccessful!!");
+.catch((err)=>{
+  console.log(err);
 });
 
 // as settinguppassport is exported as function, we call it as a SINGLE function that does setting up Password stuff.
 setUpPassport();
 
-app.set("port", process.env.PORT || 4000 );
+app.set("port", process.env.PORT );
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -52,11 +54,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 app.use(session({
-  secret: "_paxaiisaPROdeveloper",
+  secret: process.env.SECRET,
   resave: true,
   saveUninitialized: true,
   store: new MongoStore({
-  	url: 'mongodb://mymongo:27017/chitchat',
+  	url: process.env.DATABASE,
   	collection: 'sessions',
   	cookie:{},
 
@@ -77,7 +79,7 @@ io.on("connection", socket =>{
   socket.on('chat message', (data) => {
   //console.log('message: ' + data.message);
    // Storing the chats in mongoDB database
-  mongoose.createConnection('mongodb://mymongo:27017/chitchat', function(err, db) {
+  mongoose.createConnection(process.env.DATABASE, function(err, db) {
     if (err) {
         console.log('Could not save the chats', err);
     } else {

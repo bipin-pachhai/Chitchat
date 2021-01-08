@@ -9,6 +9,6 @@ services:
       - .:/usr/nodeapp
   
     ports: 
-      - "4000:4000"
+      - "8000:8000"
     depends_on: 
       - mymongo

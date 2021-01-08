@@ -18,7 +18,6 @@ function errorHandler(err, req, res, next){
 	if(err){
 		res.send('<h1> Error occured!! Please try again.</h1>');
 		//we can also handle the error on the frontend. For eg: res.json({err: err})
-
 	}
  }  
 //to store session on local mongoDB database

@@ -1,15 +1,29 @@
-<% include _chatheader %>
+<!doctype html>
+<html>
+  <head>
+    <title>Business Chat Room</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="/css/style.css" type="text/css" rel="stylesheet"/>
+  </head>
+  <body>
     <div class="chat_window">
       <div class="top_menu">
         <div class="buttons">
           <div class="button">
-            <a href="/">  <div class="button close">✕</div></a>
+            <a href="/">  <div class="button close">×</div></a>
           </div>
           </div>
         
         <div class="title" id = "userName"> <%= username %> </div>
        
+
       </div>
+    
+
+
+
+
+
     <ul id ="messages" class="messages">
         
     </ul>
@@ -29,7 +43,7 @@
 
     <script src="/js/socket.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/rexeze/formatTimeStamp/src/index-cdn.js"></script>
     <script src="/js/chat.js"></script>
 
   </body>

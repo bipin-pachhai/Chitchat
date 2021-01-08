@@ -20,11 +20,12 @@ var messages = document.getElementById("messages");
     return false;
   });
   socket.on("welcome", data => {
+    scrollToBottom();
     let li = document.createElement("li");
     let span = document.createElement("span");
     var messages = document.getElementById("messages");
     messages.appendChild(li).append(data);
-    scrollToBottom();
+    
   }); 
 
   socket.on("chat message", data => {

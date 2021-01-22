@@ -1,8 +1,8 @@
 ## Chitchat Site
-
-### Site Description
  This is simple website built on Node.js, Express and MongoDB. It mostly serves as a sample site to learn how Express framework works on backend. It includes SignUp/Login with the authentication using passportJS. All user credentials, chat and sessions will be stored on local mongoDB database.
  Most of the frontend design(css and jquery) for chat room has been used or modified from https://github.com/ezesundayeze/anonymouse-realtime-chat-app
+### App Walkthrough
+<img src="https://imgur.com/Vv40e62.gif" width = "800"><br>
 
 ### Hightlights
 1. Login/SignUp and authentication using passportJS local strategy.

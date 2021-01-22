@@ -42,7 +42,7 @@ mongoose.connect(process.env.DATABASE, {
 // as settinguppassport is exported as function, we call it as a SINGLE function that does setting up Password stuff.
 setUpPassport();
 
-app.set("port", process.env.PORT );
+app.set("port", process.env.PORT || 4000 );
 
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
@@ -104,7 +104,7 @@ app.use(passport.session());
 app.use(routes);
 app.use(errorHandler);
 
-server.listen(app.get("port"), function() {
+server.listen(app.get("port"), function() { 
   console.log("Server started on port " + app.get("port"));
   
 });
